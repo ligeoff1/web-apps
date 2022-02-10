@@ -1,0 +1,13 @@
+<% 
+companies = Company.all
+%>
+
+<h1>Companies</h>
+
+<ul>
+    <% for company in companies %>
+        <li><%= company.read_attribute(:name) #same thing as company.read_attributes(:name) is the same as company.name
+        %></li>
+    <%end%>
+
+</ul>
