@@ -1,23 +1,36 @@
 <h1>Welcome to the ENTR-451 Casino!</h1>
 
-<% numbers = ["2","3","4","5","6","7","8","9","10","jack","queen","king", "ace"] %>
-<% suits = ["diamonds","hearts","spades","clubs"] %>
+<% 
+ranks = ["2","3","4","5","6","7","8","9","10","jack","queen","king", "ace"] 
+suits = ["diamonds","hearts","spades","clubs"]
 
-<%number1 = numbers[rand(0..13)]%>
-<%suits1 = suits[rand(0..3)]%>
-<%number2 = numbers[rand(0..13)]%>
-<%suits2 = suits[rand(0..3)]%>
-<%number3 = numbers[rand(0..13)]%>
-<%suits3 = suits[rand(0..3)]%>
-<%number4 = numbers[rand(0..13)]%>
-<%suits4 = suits[rand(0..3)]%>
-<%number5 = numbers[rand(0..13)]%>
-<%suits5 = suits[rand(0..3)]%>
+#rank1 = ranks.sample
+#suit1 = suits.sample
+#rank2 = ranks.sample
+#suit2 = suits.sample
+#rank3 = ranks.sample
+#suit3 = suits.sample
+#rank4 = ranks.sample
+#suit4 = suits.sample
+#rank5 = ranks.sample
+#suit5 = suits.sample
 
-<p>
-    <img src="/images/cards/<%= number1%>_of_<%=suits1%>.svg"> 
-    <img src="/images/cards/<%= number2%>_of_<%=suits2%>.svg"> 
-    <img src="/images/cards/<%= number3%>_of_<%=suits3%>.svg"> 
-    <img src="/images/cards/<%= number4%>_of_<%=suits4%>.svg"> 
-    <img src="/images/cards/<%= number5%>_of_<%=suits5%>.svg"> 
-</p>
+#create a deck of cards - just randomizing is a problem since you can get alot of duplicates and isn't representative of a real deck
+deck = []
+    for rank in ranks
+        for suit in suits
+            #create card from rank and suit
+            card = "#{rank}_of_#{suit}"
+            deck.push(card)
+        end
+    end
+
+shuffled_deck = deck.shuffle #this is an existing ruby code for shuffle
+hand = shuffled_deck[0,5] #give me the first 5 things starting at position 0
+
+# show the deck - <%=deck%>
+%>
+
+<% for card in hand%>
+    <img src ="/images/cards/<%= card%>.svg"> #dealing a 5 hard hand
+<% end %>
